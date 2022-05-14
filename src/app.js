@@ -10,6 +10,6 @@ app.use(bodyParser.json());
 require("./configuration/database");
 
 // Routes
-// app.use("/api/role", require("./routes/roleRoutes"));
+app.use("/api/compte", require("./routes/compteRoutes"));
 
 module.exports = app;
