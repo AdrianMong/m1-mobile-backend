@@ -28,6 +28,16 @@ const sectionSchema = mongoose.Schema({
         type: String,
         trim: true
     }],
+    ordre: {
+        type: Number,
+        required: true,
+        validate: {
+            validator: function (value) {
+                return 0 < value;
+            },
+            message: props => `Ordre invalide: ${props.value}`
+        }
+    },
     createdAt: {
         type: Date,
         default: Date.now,

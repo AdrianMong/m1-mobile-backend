@@ -1,9 +1,10 @@
 const Question = require("../models/question");
+const { default: mongoose } = require("mongoose");
 
 module.exports.create = (req, res) => {
     try {
         const question = new Question({
-            lecon: req.body.lecon,
+            lecon: mongoose.Types.ObjectId(req.body.lecon),
             question: req.body.question,
             choix: req.body.choix,
             reponse: Number.parseInt(req.body.reponse),
@@ -25,7 +26,7 @@ module.exports.create = (req, res) => {
 
 module.exports.findByLecon = async (req, res) => {
     try {
-        const data = await Question.find({ lecon: req.params.lecon });
+        const data = await Question.find({ lecon: mongoose.Types.ObjectId(req.params.lecon) });
         if(data.length == 0) throw new Error("Aucune question existante pour cette leçon");
         res.status(200).json({
             status: "success",
@@ -54,7 +55,7 @@ module.exports.update = async (req, res) => {
         const question = await Question.findById(req.params.id);
         if (!question) throw new Error("Ressource introuvable");
 
-        question.lecon = req.body.lecon;
+        question.lecon = mongoose.Types.ObjectId(req.body.lecon);
         question.question = req.body.question;
         question.choix = req.body.choix;
         question.reponse = req.body.reponse;
@@ -79,7 +80,7 @@ module.exports.delete = async (req, res) => {
     try {
         const question = await Question.findById(req.params.id);
         if (!question) throw new Error("Ressource introuvable");
-        Question.deleteOne({ _id: req.params.id }).then(result => {
+        Question.deleteOne({ _id: mongoose.Types.ObjectId(req.params.id) }).then(result => {
             res.status(200).json({
                 message: "Les données ont bien été effacées",
                 data: result

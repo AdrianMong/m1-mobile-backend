@@ -49,7 +49,8 @@ module.exports.update = async (req, res) => {
 
 module.exports.delete = async (req, res) => {
     try {
-        const profil = await Profil.findById(req.params.id);
+        const compte = jwt.verify(req.headers.authorization.split(" ")[1], PRIVATE_KEY).data;
+        const profil = await Profil.findOne({ _id: req.params.id, compte: mongoose.Types.ObjectId(compte._id) });
         if (!profil) throw new Error("Ressource introuvable");
         profil.status = false;
         profil.save().then(_result => {
@@ -68,7 +69,7 @@ module.exports.delete = async (req, res) => {
 module.exports.findAll = async (req, res) => {
     try {
         const compte = jwt.verify(req.headers.authorization.split(" ")[1], PRIVATE_KEY).data;
-        const data = await Profil.find({ compte: compte._id, status: true });
+        const data = await Profil.find({ compte: mongoose.Types.ObjectId(compte._id), status: true });
         res.status(200).json({
             status: "success",
             data
@@ -81,7 +82,7 @@ module.exports.findAll = async (req, res) => {
 module.exports.findById = async (req, res) => {
     try {
         const compte = jwt.verify(req.headers.authorization.split(" ")[1], PRIVATE_KEY).data;
-        const data = await Profil.findOne({ compte: compte._id, _id: req.params.id, status: true });
+        const data = await Profil.findOne({ compte: mongoose.Types.ObjectId(compte._id), _id: req.params.id, status: true });
         if (!data) throw new Error("Ressource introuvable");
         res.status(200).json({
             status: "success",
