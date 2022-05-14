@@ -11,5 +11,6 @@ require("./configuration/database");
 
 // Routes
 app.use("/api/compte", require("./routes/compteRoutes"));
+app.use("/api/profil", require("./routes/profilRoutes"));
 
 module.exports = app;

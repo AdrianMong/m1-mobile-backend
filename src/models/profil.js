@@ -22,12 +22,17 @@ const profilSchema = mongoose.Schema({
         validate: {
             validator: function (value) {
                 let today = new Date();
-                return today <= value;
+                return today > value;
             },
             message: props => `Date de naissance invalide, ${props.value}`
         }
     },
     sexe: {
+        type: Boolean,
+        default: true,
+        required: true,
+    },
+    status: {
         type: Boolean,
         default: true,
         required: true,

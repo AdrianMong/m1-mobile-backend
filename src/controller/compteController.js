@@ -1,7 +1,5 @@
 const Compte = require("../models/compte");
 const Authentication = require("../utils/authentication");
-const jwt = require("jsonwebtoken");
-const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const Tools = require("../utils/tools");
 
 module.exports.signup = async (req, res) => {
