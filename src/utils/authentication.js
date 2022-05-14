@@ -1,3 +1,4 @@
+const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const Compte = require("./../models/compte");
