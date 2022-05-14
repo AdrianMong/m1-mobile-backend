@@ -78,7 +78,7 @@ module.exports.findAll = async (req, res) => {
     }
 }
 
-module.exports.findOne = async (req, res) => {
+module.exports.findById = async (req, res) => {
     try {
         const compte = jwt.verify(req.headers.authorization.split(" ")[1], PRIVATE_KEY).data;
         const data = await Profil.findOne({ compte: compte._id, _id: req.params.id, status: true });

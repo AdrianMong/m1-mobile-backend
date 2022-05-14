@@ -6,7 +6,7 @@ const Authentication = require("../utils/authentication");
 router.post("/", Authentication.checkToken, profilController.create);
 
 router.get("/", Authentication.checkToken, profilController.findAll);
-router.get("/:id", Authentication.checkToken, profilController.findOne);
+router.get("/:id", Authentication.checkToken, profilController.findById);
 
 router.put("/:id", Authentication.checkToken, profilController.update);
 

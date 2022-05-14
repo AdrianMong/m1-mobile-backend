@@ -8,7 +8,6 @@ const questionSchema = mongoose.Schema({
     lecon: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "lecon",
-        required: true
     },
     question: {
         type: String,
@@ -22,7 +21,7 @@ const questionSchema = mongoose.Schema({
         minLenght: 2,
         maxLenght: 4,
     }],
-    reponse: [{
+    reponse: {
         type: Number,
         validate: {
             validator: function (value) {
@@ -30,7 +29,7 @@ const questionSchema = mongoose.Schema({
             },
             message: props => `Réponse invalide: ${props.value}`
         }
-    }],
+    },
     cultureGenerale: {
         type: Boolean,
         default: false,
