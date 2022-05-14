@@ -25,12 +25,14 @@ module.exports.checkToken = (req, res, next) => {
             if (!result) throw new Error("Compte non valide");
             next();
         }).catch(error => {
-            res.status(403).json({
+            res.status(200).json({
+                status: "error",
                 message: error.message
             });
         })
     } catch (error) {
-        res.status(403).json({
+        res.status(200).json({
+            status: "error",
             message: error.message
         });
     }
