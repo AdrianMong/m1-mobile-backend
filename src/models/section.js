@@ -20,14 +20,14 @@ const sectionSchema = mongoose.Schema({
         type: String,
         trim: true,
     },
-    video: [{
+    video: {
         type: String,
         trim: true
-    }],
-    image: [{
+    },
+    image: {
         type: String,
         trim: true
-    }],
+    },
     ordre: {
         type: Number,
         required: true,
