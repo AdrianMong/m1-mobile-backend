@@ -7,7 +7,7 @@ const leconSchema = mongoose.Schema({
     },
     chapitre: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "matiere",
+        ref: "chapitre",
         required: true
     },
     titre: {

@@ -10,7 +10,7 @@ const avancementSchema = mongoose.Schema({
         ref: "lecon",
         required: true
     },
-    prodil: {
+    profil: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "profil",
         required: true
