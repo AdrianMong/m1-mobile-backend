@@ -25,7 +25,7 @@ module.exports.create = (req,res) => {
     
 module.exports.findById = async (req,res) => {
     try {
-        const data = await Matiere.findById(req.param.id);
+        const data = await Matiere.findById(req.params.id);
         if(!data) throw new Error("Ressources introuvable");
         res.status(200).json({
             status: "succes",
@@ -41,7 +41,6 @@ module.exports.update = async(req,res) => {
         const matiere = await Matiere.findById(req.params.id);
         if (!matiere) throw new Error("Ressource introuvable");
 
-        matiere._id = mongose.Types.ObjectId(req.body.id);
         matiere.titre = req.body.titre;
         matiere.description = req.body.description;
         matiere.icone = req.body.icone;
