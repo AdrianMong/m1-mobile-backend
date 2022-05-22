@@ -82,6 +82,7 @@ module.exports.delete = async (req, res) => {
         if (!question) throw new Error("Ressource introuvable");
         Question.deleteOne({ _id: mongoose.Types.ObjectId(req.params.id) }).then(result => {
             res.status(200).json({
+                status: "success",
                 message: "Les données ont bien été effacées",
                 data: result
             });
