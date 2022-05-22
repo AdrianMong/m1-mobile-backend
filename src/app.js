@@ -14,5 +14,6 @@ app.use("/api/compte", require("./routes/compteRoutes"));
 app.use("/api/profil", require("./routes/profilRoutes"));
 app.use("/api/question", require("./routes/questionRoutes"));
 app.use("/api/section", require("./routes/sectionRoutes"));
+app.use("/api/matiere", require("./routes/matiereRoute"));
 
 module.exports = app;
