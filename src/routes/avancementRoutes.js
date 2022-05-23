@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const AvancementController = require("../controller/AvancementController");
+const AvancementController = require("../controller/avancementController");
 
 router.post("/create", AvancementController.create);
 router.get("/find/:id", AvancementController.findById);
