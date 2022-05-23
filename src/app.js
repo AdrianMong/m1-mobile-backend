@@ -17,5 +17,6 @@ app.use("/api/section", require("./routes/sectionRoutes"));
 app.use("/api/matiere", require("./routes/matiereRoutes"));
 app.use("/api/chapitre", require("./routes/chapitreRoutes"));
 app.use("/api/lecon", require("./routes/leconRoutes"));
+app.use("/api/avancement", require("./routes/avancementRoutes"));
 
 module.exports = app;
